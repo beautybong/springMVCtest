@@ -1,15 +1,21 @@
 package com.qbee.springMVCtest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import service.LoginService;
 
 import java.util.HashMap;
 import java.util.Map;
 
 @Controller
 public class main {
+
+    @Autowired
+    LoginService loginService;
+
     @RequestMapping(value="/")
     public String index(Model model) {
         model.addAttribute("test", "1234");
@@ -32,6 +38,7 @@ public class main {
 
     @RequestMapping(value="/index2")
     public String index2(Model model) {
+
         model.addAttribute("test", "index2로 들어오셨군요");
         return "index2";
     }
